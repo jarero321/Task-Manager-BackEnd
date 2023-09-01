@@ -1,5 +1,6 @@
 import express, { Express } from 'express';
 import bodyParser from 'body-parser';
+import TaskRoutes from './routes/TaskRoutes';
 
 class App {
   public express: Express;
@@ -15,7 +16,7 @@ class App {
   }
 
   private routes(): void {
-    this.express.use('/api', () => {});
+    this.express.use('/api', TaskRoutes);
   }
 }
 
