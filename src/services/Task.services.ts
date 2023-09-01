@@ -15,7 +15,7 @@ class TaskService {
         id: row.id,
         title: row.title,
         description: row.description,
-        completed: row.completed,
+        completed: Boolean(row.completed),
       };
     });
     return task;
