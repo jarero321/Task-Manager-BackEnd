@@ -3,12 +3,14 @@ import bodyParser from 'body-parser';
 import TaskRoutes from './routes/TaskRoutes';
 
 class App {
-  public express: Express;
+  private express: Express;
+  private port: number;
 
   constructor() {
     this.express = express();
     this.middleware();
     this.routes();
+    this.port = 3000;
   }
 
   private middleware(): void {
@@ -18,7 +20,11 @@ class App {
   private routes(): void {
     this.express.use('/api', TaskRoutes);
   }
+
+  public start(): void {
+    this.express.listen(this.port);
+  }
 }
 
-const myApp = new App().express;
-myApp.listen(3000, () => console.log('server running'));
+const myApp = new App();
+myApp.start();
